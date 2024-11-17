@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:job_snap/app/core/dependency_injection/dependency_inject.dart' as di;
+import 'package:job_snap/app/utils/device_util.dart';
+import 'package:job_snap/job_snap.dart';
 
-import 'package:get/get.dart';
-
-import 'app/routes/app_pages.dart';
-
-void main() {
-  runApp(
-    GetMaterialApp(
-      title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-    ),
-  );
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  di.initDependency();
+  DeviceUtil.deviceOrientation();
+  DeviceUtil.deviceUiOverlay();
+  runApp(const JobSnap());
 }
